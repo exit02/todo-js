@@ -17,7 +17,8 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    alert("完了");
+    // 押された完了ボタンの親タグ(div)を未完了タスクから削除
+    deleteFormIncompleteList(completeButton.parentNode);
   });
 
   // button(削除)タグ生成
@@ -25,13 +26,8 @@ const onClickAdd = () => {
   deleteButton.innerText = "削除";
   deleteButton.addEventListener("click", () => {
     // 押された削除ボタンの親タグ(div)を未完了タスクから削除
-    // 削除するノードを取得
-    const deleteTarget = deleteButton.parentNode;
-    // 削除するノードの削除
-    document.getElementById("incomplete-list").removeChild(deleteTarget);
+    deleteFormIncompleteList(deleteButton.parentNode);
   });
-
-  console.log(deleteButton);
 
   // divタグの子要素に各要素を設定
   div.appendChild(li);
@@ -40,6 +36,12 @@ const onClickAdd = () => {
 
   // 未完了のリストに追加
   document.getElementById("incomplete-list").appendChild(div);
+};
+
+// 未完了リストから指定の要素を削除
+const deleteFormIncompleteList = (target) => {
+  // 削除するノードの削除
+  document.getElementById("incomplete-list").removeChild(target);
 };
 
 document
