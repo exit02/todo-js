@@ -19,6 +19,30 @@ const onClickAdd = () => {
   completeButton.addEventListener("click", () => {
     // 押された完了ボタンの親タグ(div)を未完了タスクから削除
     deleteFormIncompleteList(completeButton.parentNode);
+
+    // 完了リストに追加する要素
+    const addTarget = completeButton.parentNode;
+
+    // TODO内容テキストを取得
+    const text = addTarget.firstElementChild.innerText;
+
+    // div以下を消去
+    addTarget.textContent = null;
+
+    // liタグを生成
+    const li = document.createElement("li");
+    li.innerText = text;
+
+    // buttonタグ生成
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+
+    // divタグの子要素に各要素を設定
+    addTarget.appendChild(li);
+    addTarget.appendChild(backButton);
+
+    // 完了リストに追加
+    document.getElementById("complete-list").appendChild(addTarget);
   });
 
   // button(削除)タグ生成
