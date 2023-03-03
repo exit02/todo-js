@@ -176,6 +176,22 @@ module.hot.accept(reloadCSS);
 "use strict";
 
 require("./styles.css");
+var onClickAdd = function onClickAdd() {
+  // テキストボックスの値を取得し、初期化する。
+  var inputText = document.getElementById("add-text").value;
+  document.getElementById("add-text").value = "";
+
+  // divタグ生成
+  var div = document.createElement("div");
+  div.className = "list-row";
+
+  // liタグ生成
+  var li = document.createElement("li");
+  console.log(li);
+};
+document.getElementById("add-button").addEventListener("click", function () {
+  return onClickAdd();
+});
 },{"./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -201,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37437" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37171" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
